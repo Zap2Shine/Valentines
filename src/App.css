@@ -1,0 +1,167 @@
+/* Ensure the container fits well on all screen sizes (just making sure mobile works) */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black; 
+  text-align: center;
+  position: relative;
+}
+
+/* Adjust text size for mobile */
+.question {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 80%;
+  color: white;
+}
+
+/* Ensure buttons stack properly on small screens */
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+  margin-top: 30px;
+}
+
+/* Style buttons for better mobile interaction */
+button {
+  font-size: 1.5rem;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 80%;
+  max-width: 120px;
+}
+
+.yes {
+  background: linear-gradient(45deg, #ff0000, #ff4d4d, #ff0000);
+  background-size: 200% 200%;
+  color: white;
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  animation: shimmer 1.5s infinite alternate;
+}
+
+/* Shiny animated effect */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+  }
+  100% {
+    background-position: 100% 50%;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+  }
+}
+
+/* Add a glittery sparkle effect */
+.yes::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 250%;
+  height: 250%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, transparent 60%);
+  transform: rotate(30deg);
+  opacity: 0.6;
+  animation: sparkle 2s infinite linear;
+}
+
+@keyframes sparkle {
+  0% {
+    top: -100%;
+    left: -100%;
+  }
+  100% {
+    top: 100%;
+    left: 100%;
+  }
+}
+
+/* Hover effect for extra glow */
+.yes:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 0, 0, 1);
+}
+
+.no {
+  background-color: #666;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  min-width: 120px;
+  text-align: center;
+  position: relative; /* Prevents shifting other elements */
+  transition: transform 0.2s ease-in-out, left 0.3s, top 0.3s;
+}
+
+.no:hover {
+  background-color: #444;
+}
+
+/* Button hover effect */
+button:hover {
+  transform: scale(1.05);
+}
+
+.gif {
+  width: 200px;  /* Adjust size */
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+gif-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px; /* Controls distance from the question */
+  min-height: 150px; /* Ensures consistent spacing, adjust as needed */
+}
+
+.gif-container img {
+  max-width: 200px; 
+  max-height: 150px; 
+  object-fit: contain; 
+}
+
+/* Make the "No" button move away, but limit movement so it stays within screen */
+@media (min-width: 600px) {
+  .buttons {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 600px) {
+  .question {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 1.2rem;
+    padding: 10px 25px;
+  }
+}
